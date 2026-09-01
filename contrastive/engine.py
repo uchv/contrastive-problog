@@ -137,9 +137,4 @@ class Engine:
                     if id in self.params_term_map])
 
     def find_intervention_for_support(self, k: set[RuleParameter], exact=True) -> SolverResult:
-        # we create a symbolic variable for each parameter in the support
-        # Note that the support cannot include safe rules
-        # We do not need symbolic variables for rules outside the set of 
-        # relevant rules, as they can be converted to constants immediately
-        # variables = { p :  for p in k }
         return self.solver.solve_support(k, exact=exact)
